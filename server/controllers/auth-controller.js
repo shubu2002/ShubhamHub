@@ -38,13 +38,15 @@ const register = async (req, res) => {
             phone,
             password
             /*:hash_password */
-});
+        });
 
         res
             .status(201)
-            .json({ msg: "registration successful", 
-                token: await userCreated.generateToken() ,
-            userId : userCreated._id.toString() })
+            .json({
+                msg: "registration successful",
+                token: await userCreated.generateToken(),
+                userId: userCreated._id.toString()
+            })
 
     } catch (error) {
         console.error(error);
@@ -59,37 +61,37 @@ const register = async (req, res) => {
 
 // user login logic 
 
-const login = async (req,res) => {
+const login = async (req, res) => {
     try {
-        const {email,password} = req.body ;
+        const { email, password } = req.body;
 
-     const userExist = await User.findOne({email});
+        const userExist = await User.findOne({ email });
 
-     if (!userExist) {
-        return res. status(400).json ({ message : "invalid credential"})
-     }
+        if (!userExist) {
+            return res.status(400).json({ message: "invalid credential" })
+        }
 
-    //  const isPassValid = await bcrypt.compare(password , userExist.password);
+        //  const isPassValid = await bcrypt.compare(password , userExist.password);
 
-     const isPassValid = await userExist.comparePassword(password);
+        const isPassValid = await userExist.comparePassword(password);
 
-     if(isPassValid) {
-        res.status(200)
-        .json({
-            msg : "login successful",
-            token : await userExist.generateToken(),
-            userId : userExist._id.toString(),
-        })
-     }else{
-        res.status(401).json({
-            message: "invalid email or password"
-        })
-     }
+        if (isPassValid) {
+            res.status(200)
+                .json({
+                    msg: "login successful",
+                    token: await userExist.generateToken(),
+                    userId: userExist._id.toString(),
+                })
+        } else {
+            res.status(401).json({
+                message: "invalid email or password"
+            })
+        }
 
 
     } catch (error) {
         console.log(error);
-        
+
         res.status(500).json("internal server error")
     }
 
@@ -100,17 +102,17 @@ const login = async (req,res) => {
 
 // to send user data --user logic 
 
-const user = async(req,res) => {
+const user = async (req, res) => {
     try {
         const userData = req.user;
 
-        res.status(200).json({userData});
-        
+        res.status(200).json({ userData });
+
     } catch (error) {
-        console.log("error from user logic" , error);
-        
+        console.log("error from user logic", error);
+
     }
 }
 
 
-module.exports = { home, register, login ,user }
+module.exports = { home, register, login, user }
