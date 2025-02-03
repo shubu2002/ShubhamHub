@@ -86,7 +86,7 @@ export const Header = () => {
                     ? "text-white"
                     : "text-[rgb(96,96,237)] hover:text-white transition-all duration-300"
                 }
-                to="/service"
+                to="/services"
               >
                 Services
               </NavLink>
@@ -188,7 +188,7 @@ export const Header = () => {
                   ? "text-white"
                   : "text-[rgb(96,96,237)] hover:text-white transition-all duration-300"
               }
-              to="/service"
+              to="/services"
             >
               Services
             </NavLink>

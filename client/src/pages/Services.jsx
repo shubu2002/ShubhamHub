@@ -14,7 +14,7 @@ export const Services = () => {
             return (
             
 
-            <div className="min-h-[300px]  sm:min-h-[500px] rounded-lg border-white border-2 grid box transition-all bg-cyan-900 place-items-center text-purple-400" key={index}>
+            <div className="min-h-[300px]  sm:min-h-[500px] rounded-lg border-white border-2 grid box transition-all bg-cyan-900 place-items-center text-white" key={index}>
 
               <div className="card-image rounded-lg">
                 <img className="rounded-lg" src="/images/service.jpg"
