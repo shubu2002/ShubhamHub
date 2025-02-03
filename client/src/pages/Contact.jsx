@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "../store/auth";
 import { toast } from "react-toastify";
+import { BASE_URL } from "../store/helper";
 
 
 const defaultContactForm = {
@@ -53,7 +54,7 @@ export const Contact = () => {
         // console.log(contact);
 
         try {
-            const response = await fetch(`http://localhost:3000/api/form/contact`, {
+            const response = await fetch(`${BASE_URL}/api/form/contact`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState , useCallback } from "react";
 import { toast } from "react-toastify";
+import { BASE_URL } from "./helper";
 
 export const AuthContext = createContext();
 
@@ -32,7 +33,7 @@ export const AuthProvider = ({children}) => {
     const userAuthentication = async () =>{
         if (!token) return ;
         try {
-            const response = await fetch(`http://localhost:3000/api/auth/user`, {
+            const response = await fetch(`${BASE_URL}/api/auth/user`, {
                 method : "GET",
                 headers : {
                     Authorization : `Bearer ${token}`
@@ -56,7 +57,7 @@ export const AuthProvider = ({children}) => {
 
     const serviceDataFn = async () =>{
         try {
-            const response =  await fetch(`http://localhost:3000/api/data/service`, {
+            const response =  await fetch(`${BASE_URL}/api/data/service`, {
                 method : "GET"
 
             });

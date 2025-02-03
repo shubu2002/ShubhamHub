@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom"
 import { useAuth } from "../store/auth";
 import { toast } from "react-toastify";
+import { BASE_URL } from "../store/helper";
 
 
 
@@ -34,7 +35,7 @@ export const Register = () => {
         console.log(user);
         try {
 
-            const response = await fetch(`http://localhost:3000/api/auth/register`, {
+            const response = await fetch(`${BASE_URL}/api/auth/register`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
